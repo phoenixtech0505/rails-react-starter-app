@@ -142,6 +142,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def sign_in_or_register(kind)
+	# Check user if he is registered and signin or redirect to signup
     sign_in(@user, event: :authentication)
     if should_redirect?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success", kind: kind
